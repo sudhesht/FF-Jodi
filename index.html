@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <title>FF JODI — Gun Combination Checker</title>
+  <meta name="description" content="FF JODI helps Free Fire players explore gun combinations, Jodi scores, playstyles and saved builds.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">J</span><div><b>FF JODI</b><small>Find Your Perfect Jodi</small></div></div>
+  <button id="profileBtn" class="avatar" aria-label="Profile">G</button>
+</header>
+
+<main>
+  <section id="welcome" class="welcome">
+    <div>
+      <span class="eyebrow">FREE FIRE LOADOUT TOOL</span>
+      <h1>Find a Jodi that fits<br>your playstyle.</h1>
+      <p>Pick two guns, check the estimated compatibility score, and save your favourite Jodis.</p>
+    </div>
+    <button id="generateTop" class="primary">✨ Generate Jodi</button>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><span class="eyebrow">CHOOSE A MODE</span><h2>What do you want to check?</h2></div></div>
+    <div id="categoryGrid" class="category-grid"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><span class="eyebrow">RECOMMENDED</span><h2>Best Jodis</h2></div><button class="text-btn" id="seeAll">See all</button></div>
+    <div id="bestGrid" class="jodi-grid"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><span class="eyebrow">GUN + CHARACTER</span><h2>Mixed Jodis</h2></div></div>
+    <div id="mixedGrid" class="jodi-grid"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><span class="eyebrow">GUN ONLY</span><h2>Gun combinations</h2></div></div>
+    <div id="gunGrid" class="jodi-grid"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><span class="eyebrow">QUICK GUIDE</span><h2>How FF JODI works</h2></div></div>
+    <div class="steps">
+      <div><b>01</b><span>Choose a category</span><p>BR, CS, Rush, Range or Damage.</p></div>
+      <div><b>02</b><span>Pick two guns</span><p>Build the pair you want to test.</p></div>
+      <div><b>03</b><span>Check the Jodi score</span><p>See range, playstyle and balance scores.</p></div>
+      <div><b>04</b><span>Save your favourite</span><p>Keep useful Jodis on this device.</p></div>
+    </div>
+  </section>
+
+  <section class="section info">
+    <h2>About the score</h2>
+    <p>FF JODI scores are estimates created from the tool's rules for range coverage, role balance and playstyle fit. They are not official Garena ratings.</p>
+    <div class="legend">
+      <span><i class="excellent"></i> 90–100 Excellent</span>
+      <span><i class="great"></i> 80–89 Great</span>
+      <span><i class="good"></i> 70–79 Good</span>
+      <span><i class="average"></i> 50–69 Average</span>
+      <span><i class="weak"></i> 0–49 Weak</span>
+    </div>
+  </section>
+</main>
+
+<div id="profilePanel" class="drawer hidden">
+  <div class="drawer-card">
+    <button class="close" id="closeProfile">×</button>
+    <div class="profile-big">G</div>
+    <h2 id="profileName">Guest</h2>
+    <p id="profileEmail">Guest mode</p>
+    <button id="loginBtn" class="primary full">Login / Create profile</button>
+    <button id="savedBtn" class="secondary full">❤️ Saved Jodis</button>
+    <button id="historyBtn" class="secondary full">🕘 Jodi History</button>
+    <button id="logoutBtn" class="text-btn full hidden">Log out</button>
+  </div>
+</div>
+
+<div id="builder" class="modal hidden">
+  <div class="modal-card">
+    <button class="close" id="closeBuilder">×</button>
+    <span class="eyebrow">JODI BUILDER</span>
+    <h2>Pick two guns</h2>
+    <div class="select-row">
+      <label>Gun 1<select id="gun1"></select></label>
+      <div class="plus">+</div>
+      <label>Gun 2<select id="gun2"></select></label>
+    </div>
+    <div class="playstyle">
+      <button data-style="balanced" class="style active">⚖️ Balanced</button>
+      <button data-style="rush" class="style">⚡ Rush</button>
+      <button data-style="long" class="style">🎯 Long</button>
+      <button data-style="short" class="style">💥 Short</button>
+    </div>
+    <button id="checkBtn" class="primary full">CHECK JODI</button>
+  </div>
+</div>
+
+<div id="result" class="modal hidden">
+  <div class="modal-card result-card">
+    <button class="close" id="closeResult">×</button>
+    <span class="eyebrow">YOUR RESULT</span>
+    <h2 id="resultTitle"></h2>
+    <div class="score-ring"><span id="score">0%</span></div>
+    <div id="rating" class="rating"></div>
+    <div id="metrics" class="metrics"></div>
+    <div class="result-copy"><h3>Why this Jodi?</h3><p id="why"></p><h3>Weakness</h3><p id="weakness"></p></div>
+    <div class="actions"><button id="saveResult" class="primary">❤️ Save Jodi</button><button id="shareResult" class="secondary">↗ Share</button></div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
