@@ -1,119 +1,21 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#111827">
-  <title>FF JODI — Gun Combination Checker</title>
-  <meta name="description" content="FF JODI helps Free Fire players explore gun combinations, Jodi scores, playstyles and saved builds.">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<header class="topbar">
-  <div class="brand"><span class="brand-mark">J</span><div><b>FF JODI</b><small>Find Your Perfect Jodi</small></div></div>
-  <button id="profileBtn" class="avatar" aria-label="Profile">G</button>
-</header>
-
-<main>
-  <section id="welcome" class="welcome">
-    <div>
-      <span class="eyebrow">FREE FIRE LOADOUT TOOL</span>
-      <h1>Find a Jodi that fits<br>your playstyle.</h1>
-      <p>Pick two guns, check the estimated compatibility score, and save your favourite Jodis.</p>
-    </div>
-    <button id="generateTop" class="primary">✨ Generate Jodi</button>
-  </section>
-
-  <section class="section">
-    <div class="section-head"><div><span class="eyebrow">CHOOSE A MODE</span><h2>What do you want to check?</h2></div></div>
-    <div id="categoryGrid" class="category-grid"></div>
-  </section>
-
-  <section class="section">
-    <div class="section-head"><div><span class="eyebrow">RECOMMENDED</span><h2>Best Jodis</h2></div><button class="text-btn" id="seeAll">See all</button></div>
-    <div id="bestGrid" class="jodi-grid"></div>
-  </section>
-
-  <section class="section">
-    <div class="section-head"><div><span class="eyebrow">GUN + CHARACTER</span><h2>Mixed Jodis</h2></div></div>
-    <div id="mixedGrid" class="jodi-grid"></div>
-  </section>
-
-  <section class="section">
-    <div class="section-head"><div><span class="eyebrow">GUN ONLY</span><h2>Gun combinations</h2></div></div>
-    <div id="gunGrid" class="jodi-grid"></div>
-  </section>
-
-  <section class="section">
-    <div class="section-head"><div><span class="eyebrow">QUICK GUIDE</span><h2>How FF JODI works</h2></div></div>
-    <div class="steps">
-      <div><b>01</b><span>Choose a category</span><p>BR, CS, Rush, Range or Damage.</p></div>
-      <div><b>02</b><span>Pick two guns</span><p>Build the pair you want to test.</p></div>
-      <div><b>03</b><span>Check the Jodi score</span><p>See range, playstyle and balance scores.</p></div>
-      <div><b>04</b><span>Save your favourite</span><p>Keep useful Jodis on this device.</p></div>
-    </div>
-  </section>
-
-  <section class="section info">
-    <h2>About the score</h2>
-    <p>FF JODI scores are estimates created from the tool's rules for range coverage, role balance and playstyle fit. They are not official Garena ratings.</p>
-    <div class="legend">
-      <span><i class="excellent"></i> 90–100 Excellent</span>
-      <span><i class="great"></i> 80–89 Great</span>
-      <span><i class="good"></i> 70–79 Good</span>
-      <span><i class="average"></i> 50–69 Average</span>
-      <span><i class="weak"></i> 0–49 Weak</span>
-    </div>
-  </section>
-</main>
-
-<div id="profilePanel" class="drawer hidden">
-  <div class="drawer-card">
-    <button class="close" id="closeProfile">×</button>
-    <div class="profile-big">G</div>
-    <h2 id="profileName">Guest</h2>
-    <p id="profileEmail">Guest mode</p>
-    <button id="loginBtn" class="primary full">Login / Create profile</button>
-    <button id="savedBtn" class="secondary full">❤️ Saved Jodis</button>
-    <button id="historyBtn" class="secondary full">🕘 Jodi History</button>
-    <button id="logoutBtn" class="text-btn full hidden">Log out</button>
-  </div>
-</div>
-
-<div id="builder" class="modal hidden">
-  <div class="modal-card">
-    <button class="close" id="closeBuilder">×</button>
-    <span class="eyebrow">JODI BUILDER</span>
-    <h2>Pick two guns</h2>
-    <div class="select-row">
-      <label>Gun 1<select id="gun1"></select></label>
-      <div class="plus">+</div>
-      <label>Gun 2<select id="gun2"></select></label>
-    </div>
-    <div class="playstyle">
-      <button data-style="balanced" class="style active">⚖️ Balanced</button>
-      <button data-style="rush" class="style">⚡ Rush</button>
-      <button data-style="long" class="style">🎯 Long</button>
-      <button data-style="short" class="style">💥 Short</button>
-    </div>
-    <button id="checkBtn" class="primary full">CHECK JODI</button>
-  </div>
-</div>
-
-<div id="result" class="modal hidden">
-  <div class="modal-card result-card">
-    <button class="close" id="closeResult">×</button>
-    <span class="eyebrow">YOUR RESULT</span>
-    <h2 id="resultTitle"></h2>
-    <div class="score-ring"><span id="score">0%</span></div>
-    <div id="rating" class="rating"></div>
-    <div id="metrics" class="metrics"></div>
-    <div class="result-copy"><h3>Why this Jodi?</h3><p id="why"></p><h3>Weakness</h3><p id="weakness"></p></div>
-    <div class="actions"><button id="saveResult" class="primary">❤️ Save Jodi</button><button id="shareResult" class="secondary">↗ Share</button></div>
-  </div>
-</div>
-
-<div id="toast" class="toast"></div>
-<script src="app.js"></script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FF JODI — Free Fire Gun Combination Checker</title><meta name="description" content="Check Free Fire-inspired gun combinations, character synergies and FF JODI estimated scores.">
+<meta property="og:title" content="FF JODI — Free Fire Gun Combination Checker"><meta property="og:description" content="Find your perfect Jodi with gun combinations, characters and mobile sensitivity recommendations."><link rel="stylesheet" href="style.css"></head>
+<body><div class="bg"></div><header><a class="brand" href="#home"><b>J</b><span>FF JODI<small>Find Your Perfect Jodi</small></span></a><button class="icon">G</button></header>
+<main id="home"><section class="hero"><div class="eyebrow">FREE FIRE LOADOUT TOOL</div><h1>Find a Jodi that fits your playstyle.</h1><p>Choose your guns, match your style and discover your best Jodi.</p><button class="primary" onclick="scrollToId('jodi')">✨ Generate Jodi</button></section>
+<section><div class="section-head"><small>CHOOSE A MODE</small><h2>What do you want to check?</h2></div><div class="modes" id="modes"></div></section>
+<section><div class="section-head"><small>RECOMMENDED</small><h2>Best Jodis</h2></div><div class="recommend" id="recommend"></div></section>
+<section><div class="section-head"><small>GUN + CHARACTER</small><h2>Featured Jodis</h2></div><div class="recommend" id="featured"></div></section>
+<section id="jodi"><div class="panel"><small>JODI CHECKER</small><h2>Build your combination</h2><div class="tabs"><button class="tab active" data-mode="gun">🔫 Gun Only</button><button class="tab" data-mode="mixed">👤 Gun + Character</button></div>
+<label>Mode<select id="mode"><option>BR</option><option>CS</option><option>General</option></select></label><label>Playstyle<select id="style"><option>Balanced</option><option>Rush</option><option>Long Range</option><option>Short Range</option><option>Damage</option></select></label>
+<div class="pickgrid"><label>Gun 1<input id="gun1" list="gunList" placeholder="Search guns..."></label><label>Gun 2<input id="gun2" list="gunList" placeholder="Search guns..."></label></div><div id="charPick" class="hidden"><label>Character<input id="character" list="charList" placeholder="Search characters..."></label></div>
+<datalist id="gunList"></datalist><datalist id="charList"></datalist><button class="primary full" id="check">CHECK JODI</button></div></section>
+<section id="result" class="hidden"><div class="panel"><small>FF JODI ESTIMATE</small><h2 id="combo"></h2><div class="score" id="score"></div><div id="level" class="level"></div><div class="bars" id="bars"></div><p id="explain"></p><div class="actions"><button id="save">❤️ SAVE JODI</button><button id="share">↗ SHARE JODI</button><button id="again">🔄 TRY ANOTHER</button></div><small>Not an official game rating.</small></div></section>
+<section><div class="section-head"><small>NEW</small><h2>🎨 Gun Skins</h2></div><div class="feature"><b>Gun Skin Library</b><p>Add licensed/original skin images later under assets/guns/. The data structure is ready.</p></div></section>
+<section><div class="section-head"><small>DEVICE SETTINGS</small><h2>📱 Mobile Sensitivity</h2></div><div class="panel"><p>Choose a phone type for a recommended starting point. Tune it to your own touch response and playstyle.</p><label>Mobile model<select id="device"><option>Generic Android</option><option>Budget Android</option><option>Mid-range Android</option><option>Gaming Android</option><option>iPhone</option></select></label><button class="secondary full" id="sens">SHOW SENSITIVITY</button><div id="sensOut"></div></div></section>
+<section><div class="section-head"><small>QUICK GUIDE</small><h2>How FF JODI works</h2></div><div class="steps"><article><b>01</b><h3>Choose a category</h3><p>BR, CS, Rush, Range or Damage.</p></article><article><b>02</b><h3>Pick two guns</h3><p>Build the pair you want to test.</p></article><article><b>03</b><h3>Check the Jodi score</h3><p>See range, playstyle and balance scores.</p></article><article><b>04</b><h3>Save your favourite</h3><p>Keep useful Jodis on this device.</p></article></div></section>
+<section class="trust"><h2>About the score</h2><p>FF JODI scores are estimates created by its own combination logic. They are not official Garena ratings.</p><p>🏆 90–100 Excellent · 🔥 80–89 Great · 👍 70–79 Good · ⚡ 50–69 Average · ⚠️ 0–49 Weak</p></section></main>
+<nav class="bottom"><a href="#home">⌂<span>Home</span></a><a href="#jodi">◈<span>Jodi</span></a><a href="#saved">♥<span>Saved</span></a><a href="#profile">●<span>Profile</span></a></nav>
+<section id="saved" class="drawer"><div class="panel"><h2>Saved Jodis</h2><div id="savedList"></div></div></section><section id="profile" class="drawer"><div class="panel"><h2>Profile / Login</h2><p>Frontend only. Real Google/email authentication must be connected to Firebase/Auth before use.</p><button class="secondary full">Continue with Google</button><button class="secondary full">Email & Password</button></div></section>
+<footer><b>FF JODI</b><p>Independent fan-made tool. Not affiliated with or endorsed by Garena or Free Fire.</p><p>About · Contact · Privacy · Terms · Disclaimer</p></footer>
+<script src="data/guns.js"></script><script src="data/characters.js"></script><script src="app.js"></script></body></html>
