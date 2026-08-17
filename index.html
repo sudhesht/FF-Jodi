@@ -17,135 +17,148 @@
   </header>
 
   <main id="home">
-    <section class="hero">
-      <div class="eyebrow">FREE FIRE LOADOUT TOOL</div>
-      <h1>Find a Jodi that fits your playstyle.</h1>
-      <p>Choose your guns, match your style and discover your best Jodi. Use the cards below to quickly filter and run the Jodi checker.</p>
-    </section>
+    <!-- HERO / MAIN JODI CHECKER CARD -->
+    <section class="hero-card">
+      <div class="hero-head">
+        <h1>FF JODI</h1>
+        <div class="hero-sub">Find Your Perfect Jodi</div>
+        <p class="hero-desc">Discover optimal gun pairings and character synergies tailored to your playstyle — fast, mobile-first and reliable.</p>
+      </div>
 
-    <section>
-      <div class="section-head"><small>CHOOSE A MODE</small><h2>What do you want to check?</h2></div>
-      <div class="modes" id="modes"></div>
-    </section>
-
-    <section>
-      <div class="section-head"><small>RECOMMENDED</small><h2>Best Jodis</h2></div>
-      <div class="recommend" id="recommend"></div>
-    </section>
-
-    <section>
-      <div class="section-head"><small>GUN + CHARACTER</small><h2>Featured Jodis</h2></div>
-      <div class="recommend" id="featured"></div>
-    </section>
-
-    <section id="jodi">
-      <div class="panel">
-        <small>JODI CHECKER</small>
-        <h2>Build your combination</h2>
-        <div class="tabs">
-          <button class="tab active" data-mode="gun">🔫 Gun Only</button>
-          <button class="tab" data-mode="char">👤 Gun + Character</button>
-        </div>
-
-        <label>Mode
-          <select id="mode">
-            <option>BR</option>
-            <option>CS</option>
-            <option>General</option>
-          </select>
-        </label>
-        <label>Playstyle
-          <select id="style">
-            <option>Balanced</option>
-            <option>Rush</option>
-            <option>Short Range</option>
-            <option>Long Range</option>
-          </select>
-        </label>
-
-        <div class="pickgrid">
-          <label>Gun 1
-            <input id="gun1" list="gunList" placeholder="Search guns...">
-          </label>
-          <label>Gun 2
-            <input id="gun2" list="gunList" placeholder="Search guns...">
-          </label>
-        </div>
-
-        <datalist id="gunList"></datalist>
-        <datalist id="charList"></datalist>
-        <button class="primary full" id="check">CHECK JODI</button>
+      <div class="primary-card" role="button" id="primaryJodiCard" onclick="window.location.hash='jodi';document.getElementById('gun1').focus();">
+        <div class="pc-top">🔥 JODI CHECKER</div>
+        <div class="pc-body">Find your best gun pairing</div>
+        <div class="pc-cta"><button class="primary big" onclick="document.getElementById('gun1').focus();document.getElementById('check').click();event.stopPropagation()">CHECK NOW</button></div>
       </div>
     </section>
 
-    <section id="result" class="hidden">
-      <div class="panel">
-        <small>FF JODI ESTIMATE</small>
-        <h2 id="combo"></h2>
-        <div class="score" id="score"></div>
-        <div id="level" class="level"></div>
-        <div class="bars" id="bars"></div>
-        <p id="explain"></p>
+    <!-- MAIN FEATURE CARDS GRID -->
+    <section class="features-grid" aria-label="Main features">
+      <button class="feature-card" onclick="window.location.hash='jodi';document.getElementById('gun1').focus();">
+        <div class="f-icon">🔫</div>
+        <div class="f-title">Jodi Checker</div>
+        <div class="f-desc">Find a combo</div>
+      </button>
+      <button class="feature-card" onclick="window.location.hash='saved';">
+        <div class="f-icon">💾</div>
+        <div class="f-title">Saved Guns</div>
+        <div class="f-desc">Your picks</div>
+      </button>
+      <button class="feature-card" onclick="window.location.hash='featured';">
+        <div class="f-icon">🎯</div>
+        <div class="f-title">Gun Combos</div>
+        <div class="f-desc">Best pairs</div>
+      </button>
+      <button class="feature-card" onclick="window.location.hash='device-settings';">
+        <div class="f-icon">📱</div>
+        <div class="f-title">Sensitivity</div>
+        <div class="f-desc">Find settings</div>
+      </button>
+    </section>
+
+    <!-- WHAT DO YOU WANT TO CHECK? (modes) -->
+    <section class="section-card" aria-labelledby="modesTitle">
+      <div class="section-head"><small>CHOOSE A MODE</small><h2 id="modesTitle">What do you want to check?</h2></div>
+      <div class="modes card-grid" id="modes"></div>
+    </section>
+
+    <!-- BEST JODIS -->
+    <section class="section-card" aria-labelledby="bestTitle">
+      <div class="section-head"><small>RECOMMENDED</small><h2 id="bestTitle">Best Jodis</h2></div>
+      <div class="recommend card-grid" id="recommend"></div>
+    </section>
+
+    <!-- FEATURED JODIS -->
+    <section class="section-card" aria-labelledby="featTitle">
+      <div class="section-head"><small>GUN + CHARACTER</small><h2 id="featTitle">Featured Jodis</h2></div>
+      <div class="recommend card-grid" id="featured"></div>
+    </section>
+
+    <!-- SAVED COLLECTIONS (feature card) -->
+    <section class="section-card">
+      <div class="saved-card feature-large">
+        <div class="sc-left">💾</div>
+        <div class="sc-mid">
+          <b>SAVED COLLECTIONS</b>
+          <p>Save your favourite Jodis and quickly use them later.</p>
+        </div>
+        <div class="sc-cta"><button class="primary" onclick="window.location.hash='saved'">VIEW SAVED</button></div>
       </div>
     </section>
 
-    <section>
-      <div class="section-head"><small>NEW</small><h2>🎨 Gun Skins</h2></div>
-      <div class="feature"><b>Gun Skin Library</b><p>Add licensed/original skin images later under assets/guns/. The dataset supports skins per gun for future updates.</p></div>
+    <!-- GUN LIBRARY + CHARACTER LIBRARY -->
+    <section class="section-card small-grid">
+      <button class="feature-card" onclick="document.getElementById('gun1').focus(); showOverlay && showOverlay('gun')">
+        <div class="f-icon">🔫</div>
+        <div class="f-title">Gun Library</div>
+        <div class="f-desc">Explore all available guns</div>
+      </button>
+      <button class="feature-card" onclick="showOverlay && showOverlay('char')">
+        <div class="f-icon">👤</div>
+        <div class="f-title">Character Library</div>
+        <div class="f-desc">Explore characters and abilities</div>
+      </button>
     </section>
 
-    <section>
-      <div class="section-head"><small>DEVICE SETTINGS</small><h2>📱 Mobile Sensitivity</h2></div>
-      <div class="panel" id="sensitivity-panel">
-        <div class="sensi-row">
-          <label style="flex:1">Brand
+    <!-- DEVICE SETTINGS / SENSITIVITY -->
+    <section class="section-card" id="device-settings">
+      <div class="section-head"><small>DEVICE SETTINGS</small><h2>📱 Free Fire Sensitivity</h2></div>
+      <div class="panel sensi-panel">
+        <div class="sensi-top">
+          <p class="hero-desc">Find a recommended sensitivity for your phone</p>
+        </div>
+        <div class="sensi-controls">
+          <label>Brand
             <select id="brandSelect"></select>
           </label>
-          <label style="flex:2">Search model
-            <input id="modelSearch" placeholder="Search by model name or id...">
+          <label>Search model
+            <input id="modelSearch" placeholder="Search phone model...">
           </label>
-        </div>
-        <div id="modelList" class="model-list"></div>
-        <label>Playstyle
-          <select id="playstyleSelect">
-            <option>Balanced</option>
-            <option>Rush</option>
-            <option>Drag Headshot</option>
-            <option>Long Range</option>
-            <option>Short Range</option>
-            <option>Sniper</option>
-          </select>
-        </label>
+          <div id="modelList" class="model-list"></div>
+          <label>Playstyle
+            <select id="playstyleSelect">
+              <option>Balanced</option>
+              <option>Rush</option>
+              <option>Drag Headshot</option>
+              <option>Long Range</option>
+              <option>Short Range</option>
+              <option>Sniper</option>
+            </select>
+          </label>
 
-        <div class="sensi-card" id="sensiCard">
-          <div class="sensi-title">FF JODI recommended starting sensitivity</div>
-          <table class="sensi-table">
-            <tr><td>General</td><td id="sensiGeneral">-</td></tr>
-            <tr><td>Red Dot</td><td id="sensiRedDot">-</td></tr>
-            <tr><td>2x Scope</td><td id="sensi2x">-</td></tr>
-            <tr><td>4x Scope</td><td id="sensi4x">-</td></tr>
-            <tr><td>Sniper Scope</td><td id="sensiSniper">-</td></tr>
-            <tr><td>Free Look</td><td id="sensiFreeLook">-</td></tr>
-          </table>
-          <div class="sensi-actions">
-            <button class="primary" id="copySensiBtn">Copy Sensitivity</button>
-            <button class="small" id="resetSensiBtn">Reset</button>
+          <div class="sensi-card">
+            <table class="sensi-table">
+              <tr><td>GENERAL</td><td id="sensiGeneral">200</td></tr>
+              <tr><td>RED DOT</td><td id="sensiRedDot">190</td></tr>
+              <tr><td>2X SCOPE</td><td id="sensi2x">180</td></tr>
+              <tr><td>4X SCOPE</td><td id="sensi4x">170</td></tr>
+              <tr><td>SNIPER SCOPE</td><td id="sensiSniper">120</td></tr>
+              <tr><td>FREE LOOK</td><td id="sensiFreeLook">180</td></tr>
+            </table>
+            <div class="sensi-actions">
+              <button id="copySensiBtn" class="primary">COPY SENSITIVITY</button>
+              <button id="resetSensiBtn" class="primary outline">RESET</button>
+            </div>
+            <div class="sensi-disclaimer">FF JODI Sensitivity is a recommended starting point and is not an official Garena setting.</div>
           </div>
-          <p class="sensi-disclaimer">Sensitivity is a recommended starting point, not an official Garena setting. Actual results vary by device, FPS, touch response and personal preference.</p>
         </div>
       </div>
     </section>
 
-    <section>
-      <div class="section-head"><small>QUICK GUIDE</small><h2>How FF JODI works</h2></div>
-      <div class="steps">
-        <article><b>01</b><h3>Choose a category</h3><p>BR, CS, Rush, Range or Damage.</p></article>
-        <article><b>02</b><h3>Pick guns</h3><p>Try combinations and compare their estimated score.</p></article>
-        <article><b>03</b><h3>Save favorites</h3><p>Save your best Jodis to review later.</p></article>
+    <!-- PROFILE CARD -->
+    <section class="section-card">
+      <div class="profile-card feature-large glow-card" onclick="window.location.hash='profile'">
+        <div class="pc-left">✨</div>
+        <div class="pc-mid">
+          <h3>PROFILE</h3>
+          <p>Sign in to save your Jodis and collections. Demo login available.</p>
+        </div>
+        <div class="pc-cta"><button class="primary">LOGIN</button></div>
       </div>
     </section>
 
-    <section class="trust">
+    <!-- TRUST / ABOUT -->
+    <section class="trust section-card">
       <h2>About the score</h2>
       <p>FF JODI scores are estimates created by its own combination logic. They are not official Garena ratings.</p>
       <p>🏆 90–100 Excellent · 🔥 80–89 Great · ⚡ 70–79 Good</p>
@@ -159,10 +172,6 @@
   <section id="profile" class="drawer"><div class="panel"><h2>Profile / Login</h2><p>Local demo profile — login UI preserved.</p></div></section>
 
   <footer><b>FF JODI</b><p>Independent fan-made tool. Not affiliated with or endorsed by Garena or Free Fire.</p><p>About · Contact · Privacy · Terms · Disclaimer</p></footer>
-
-  <!-- Sensitivity data and UI script -->
-  <script src="data/sensitivity.js"></script>
-  <script src="scripts/sensitivity-ui.js"></script>
 
   <!-- Inline data + UI logic (keeps existing features intact and won't remove anything) -->
   <script>
@@ -365,8 +374,8 @@
     // Make sure result hidden initially
     document.getElementById('result').classList.add('hidden');
 
-    // Sensitivity UI init (if script loaded earlier it registers handlers itself)
-    if (window.initSensitivityUI) window.initSensitivityUI();
+    // Initialize sensitivity UI if available
+    if(window.initSensitivityUI) try{ window.initSensitivityUI(); }catch(e){ console.error('sensitivity init failed',e); }
   }
 
   // Run on DOM ready
