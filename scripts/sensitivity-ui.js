@@ -38,12 +38,13 @@
   }
 
   function renderProfileValues(values){
-    $('sensiGeneral').textContent = values.general;
-    $('sensiRedDot').textContent = values.redDot;
-    $('sensi2x').textContent = values.x2;
-    $('sensi4x').textContent = values.x4;
-    $('sensiSniper').textContent = values.sniper;
-    $('sensiFreeLook').textContent = values.freeLook;
+    // Values must display on 0..200 scale
+    $('sensiGeneral').textContent = window.ffSensitivity && window.ffSensitivity.clamp ? window.ffSensitivity.clamp(values.general) : values.general;
+    $('sensiRedDot').textContent = window.ffSensitivity && window.ffSensitivity.clamp ? window.ffSensitivity.clamp(values.redDot) : values.redDot;
+    $('sensi2x').textContent = window.ffSensitivity && window.ffSensitivity.clamp ? window.ffSensitivity.clamp(values.x2) : values.x2;
+    $('sensi4x').textContent = window.ffSensitivity && window.ffSensitivity.clamp ? window.ffSensitivity.clamp(values.x4) : values.x4;
+    $('sensiSniper').textContent = window.ffSensitivity && window.ffSensitivity.clamp ? window.ffSensitivity.clamp(values.sniper) : values.sniper;
+    $('sensiFreeLook').textContent = window.ffSensitivity && window.ffSensitivity.clamp ? window.ffSensitivity.clamp(values.freeLook) : values.freeLook;
   }
 
   function applyPlaystyleAdjustment(style){
@@ -60,12 +61,12 @@
       default: break; // Balanced
     }
     const adjusted = {
-      general: Math.round(v.general * mul.general),
-      redDot: Math.round(v.redDot * mul.redDot),
-      x2: Math.round(v.x2 * mul.x2),
-      x4: Math.round(v.x4 * mul.x4),
-      sniper: Math.round(v.sniper * mul.sniper),
-      freeLook: Math.round(v.freeLook * mul.freeLook)
+      general: window.ffSensitivity.clamp(v.general * mul.general),
+      redDot: window.ffSensitivity.clamp(v.redDot * mul.redDot),
+      x2: window.ffSensitivity.clamp(v.x2 * mul.x2),
+      x4: window.ffSensitivity.clamp(v.x4 * mul.x4),
+      sniper: window.ffSensitivity.clamp(v.sniper * mul.sniper),
+      freeLook: window.ffSensitivity.clamp(v.freeLook * mul.freeLook)
     };
     currentProfile.values = adjusted;
     renderProfileValues(adjusted);
@@ -74,7 +75,7 @@
   function onBrandChange(){
     const brand = $('brandSelect').value;
     const profiles = (window.ffSensitivity && window.ffSensitivity.profiles) || [];
-    const filtered = profiles.filter(p=>p.brand === brand);
+    const filtered = brand ? profiles.filter(p=>p.brand === brand) : profiles;
     renderModelList(filtered);
   }
 
