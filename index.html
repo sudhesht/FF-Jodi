@@ -96,7 +96,44 @@
 
     <section>
       <div class="section-head"><small>DEVICE SETTINGS</small><h2>📱 Mobile Sensitivity</h2></div>
-      <div class="panel"><p>Choose a phone type for a recommended starting point. Tune it to your own comfort.</p></div>
+      <div class="panel" id="sensitivity-panel">
+        <div class="sensi-row">
+          <label style="flex:1">Brand
+            <select id="brandSelect"></select>
+          </label>
+          <label style="flex:2">Search model
+            <input id="modelSearch" placeholder="Search by model name or id...">
+          </label>
+        </div>
+        <div id="modelList" class="model-list"></div>
+        <label>Playstyle
+          <select id="playstyleSelect">
+            <option>Balanced</option>
+            <option>Rush</option>
+            <option>Drag Headshot</option>
+            <option>Long Range</option>
+            <option>Short Range</option>
+            <option>Sniper</option>
+          </select>
+        </label>
+
+        <div class="sensi-card" id="sensiCard">
+          <div class="sensi-title">FF JODI recommended starting sensitivity</div>
+          <table class="sensi-table">
+            <tr><td>General</td><td id="sensiGeneral">-</td></tr>
+            <tr><td>Red Dot</td><td id="sensiRedDot">-</td></tr>
+            <tr><td>2x Scope</td><td id="sensi2x">-</td></tr>
+            <tr><td>4x Scope</td><td id="sensi4x">-</td></tr>
+            <tr><td>Sniper Scope</td><td id="sensiSniper">-</td></tr>
+            <tr><td>Free Look</td><td id="sensiFreeLook">-</td></tr>
+          </table>
+          <div class="sensi-actions">
+            <button class="primary" id="copySensiBtn">Copy Sensitivity</button>
+            <button class="small" id="resetSensiBtn">Reset</button>
+          </div>
+          <p class="sensi-disclaimer">Sensitivity is a recommended starting point, not an official Garena setting. Actual results vary by device, FPS, touch response and personal preference.</p>
+        </div>
+      </div>
     </section>
 
     <section>
@@ -122,6 +159,10 @@
   <section id="profile" class="drawer"><div class="panel"><h2>Profile / Login</h2><p>Local demo profile — login UI preserved.</p></div></section>
 
   <footer><b>FF JODI</b><p>Independent fan-made tool. Not affiliated with or endorsed by Garena or Free Fire.</p><p>About · Contact · Privacy · Terms · Disclaimer</p></footer>
+
+  <!-- Sensitivity data and UI script -->
+  <script src="data/sensitivity.js"></script>
+  <script src="scripts/sensitivity-ui.js"></script>
 
   <!-- Inline data + UI logic (keeps existing features intact and won't remove anything) -->
   <script>
@@ -323,6 +364,9 @@
 
     // Make sure result hidden initially
     document.getElementById('result').classList.add('hidden');
+
+    // Sensitivity UI init (if script loaded earlier it registers handlers itself)
+    if (window.initSensitivityUI) window.initSensitivityUI();
   }
 
   // Run on DOM ready
